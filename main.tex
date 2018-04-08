@@ -1,0 +1,360 @@
+%% BEAMER THEME FLIP 2012: Main tex file for compiling
+%$ Compile this file. 
+%%
+%% Copyright 2012 by Flip Tanedo
+%% This file may be distributed and/or modified
+%% 	1. under the LaTeX Project Public License and/or
+%% 	2. under the GNU Public License.
+%% 
+%% If you e-mail Flip (pt267@cornell.edu) to say that you
+%% like this style file, then it would make him smile.
+
+%% Please see notes.txt for comments on Beamer Theme Flip 2013
+%% By default, this template is meant to be run with XeLaTeX (for fonts)
+%% To run in PDFLaTeX, remove fontspec and any font commands
+
+%% Discussion of Beamer vs XeLaTeX vs LuaLaTeX
+%% http://tex.stackexchange.com/questions/29497/xelatex-preventing-beamer-from-using-different-backgrounds
+
+
+\documentclass[12 pt]{beamer}
+\usetheme[
+	bullet=circle,		% Other option: square
+	bigpagenumber,		% circled page number on lower right
+	topline=true,			% colored bar at the top of the frame 
+	shadow=false,			% Shading for beamer blocks
+	watermark=BG_lower,	% png file for the watermark
+	]{Flip}
+
+
+\newcommand{\titleimage}{title}			% Custom title 
+\newcommand{\tanedo}{tanedolight}		% Custom author name
+\newcommand{\CMSSMDM}{CMSSMDMlight.png}	% light background plot
+
+
+%%%%%%%%%%
+% FONTS %
+%%%%%%%%%%
+
+%% Default font: lmodern, doesn't require fontspec % solves some default warnings
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}			
+%\usepackage{sfmath}		% Sans Serif Math, off by default
+
+%% Protects fonts from Beamer screwing with them
+%% http://tex.stackexchange.com/questions/10488/force-computer-modern-in-math-mode
+\usefonttheme{professionalfonts}
+
+
+%% XeLaTeX fonts: (comment out if you don't use XeLaTeX)
+
+%% For advanced fonts: access local OS X fonts
+%\usepackage[no-math]{fontspec}		
+%% This template uses typical OS X and Adobe fonts
+%\defaultfontfeatures{Mapping=tex-text}	% This seems to be important for mapping glyphs properly
+
+%\setmainfont{Gill Sans}			% Beamer ignores "main font" in favor of sans font
+%\setsansfont{Gill Sans}			% This is the font that beamer will use by default
+%% \setmainfont{Gill Sans Light}		% Prettier, but harder to read
+
+%\setbeamerfont{title}{family=\fontspec{Gill Sans}}
+
+
+%\newcommand{\handwriting}{\fontspec{augie}} % From Emerald City, free font
+\newcommand{\handwriting}{}	% If you prefer no special handwriting font or don't have augie
+
+%% Gill Sans doesn't look very nice when boldfaced
+%% This is a hack to use Helvetica instead
+%% Usage: \textbf{\forbold some stuff}
+%\newcommand{\forbold}{\fontspec{Helvetica}}
+\newcommand{\forbold}{} % if you want no special boldface
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Usual LaTeX Packages %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{mathrsfs} 			% For Weinberg-esque letters
+\usepackage{cancel}				% For "SUSY-breaking" symbol
+\usepackage{slashed}            % for slashed characters in math mode
+%\usepackage{bbm}                % for \mathbbm{1} (unit matrix)
+\usepackage{amsthm}				% For theorem environment
+%\usepackage{multirow}			% For multi row cells in table
+%\usepackage{arydshln} 			% For dashed lines in arrays and tables
+%\usepackage{tikzfeynman}		% For Feynman diagrams
+% \usepackage{subfig}           % for sub figures
+% \usepackage{young}			% For Young Tableaux
+% \usepackage{xspace}			% For spacing after commands
+% \usepackage{wrapfig}			% for Text wrap around figures
+% \usepackage{framed}
+
+
+\graphicspath{{images/}{images-template/}}	% Put all images in this directory. Avoids clutter.
+
+
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{mindmap,trees}	% For mind map
+% http://www.texample.net/tikz/examples/computer-science-mindmap/
+
+
+% SOME COMMANDS THAT I FIND HANDY
+% \renewcommand{\tilde}{\widetilde} % dinky tildes look silly, dosn't work with fontspec
+\newcommand{\comment}[1]{\textcolor{comment}{\footnotesize{#1}\normalsize}} % comment mild
+\newcommand{\Comment}[1]{\textcolor{Comment}{\footnotesize{#1}\normalsize}} % comment bold
+\newcommand{\COMMENT}[1]{\textcolor{COMMENT}{\footnotesize{#1}\normalsize}} % comment crazy bold
+\newcommand{\Alert}[1]{\textcolor{Alert}{#1}} % louder alert
+\newcommand{\ALERT}[1]{\textcolor{ALERT}{#1}} % loudest alert
+%% "\alert" is already a beamer pre-defined
+
+
+
+\author[Leonardo Maccari\quad {leonardo.maccari@unitn.it}]{Leonardo Maccari}
+\title[Reti Comunitarie]{Reti Comunitarie}
+\institute{DISI, University of Trento}
+\date{\today}
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Additional  settings %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% To use external nodes; http://www.texample.net/tikz/examples/beamer-arrows/
+\tikzstyle{every picture}+=[remember picture]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page           %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{defs}
+{ %% This is a total kludge for a fancy title page background
+\setbeamertemplate{sidebar right}{\llap{
+\includegraphics[width=\paperwidth,height=\paperheight]{topo-trans-red}}}
+\begin{frame}[c]%{\phantom{title page}} 
+% The \phantom{title page} is a kludge to get the red bar on top
+% \titlepage
+\begin{center}
+	% \includegraphics[width=7cm]{WarpedPenguinsReturn}
+
+	\begin{tikzpicture}%[show background grid] %% Use grid for positioning, then turn off
+		\node[inner sep=0pt,above right] (title) 
+			{ \includegraphics[width=7cm]{title-dag} };
+		% \node (title) at (1.5,1.5) {};
+	\end{tikzpicture}
+	\quad
+
+	% \includegraphics[width=7cm]{\titleimage} 
+	
+	
+	%\includegraphics[height=1.5cm]{\tanedo} \quad
+	 % {\fontspec{Zapfino} Flip Tanedo} \quad
+	% \includegraphics[height=1cm]{FlipSansSerif} \quad
+	% \footnotesize\textcolor{gray}{In collaboration with} Csaba Cs\'aki\textcolor{gray}{,} Yuval Grossman\textcolor{gray}{, and} Yuhsin Tsai\normalsize\\
+	% \textcolor{Comment}{ \;($\pi$ day)}\\
+	% \Comment{4 February 2011}
+ \footnotesize\textcolor{gray}{Leonardo Maccari, \\ leonardo.maccari@unitn.it \\ @leobowski}
+	\vspace{.5em}
+	\Comment{\\Firenze \\ 19/12/2016}
+\end{center}
+\end{frame}
+}
+
+
+
+\begin{frame}[c]{Who am I}
+  \bi
+  \ii Ricercatore al DISI: Universita' di Trento
+  \ii WP coordinator del progetto netCommons: www.netcommons.eu
+  \ii Fondatore della rete ninux di Firenze
+  \ii @leobowski
+  \ei
+\end{frame}
+
+%
+%\frame{
+%    \frametitle{netcommons.eu}
+%    \bi
+%    \ii Un progetto di ricerca di tre anni, iniziato a Gennaio in cui ci
+%    occupiamo di reti comunitarie con un approccio interdisciplinare:
+%    \bi
+%    \ii 3 dipartimenti di informatica 
+%    \ii 2 dipartimenti/centri di ricerca di legge
+%    \ii 1 dipartimento di sociologia
+%    \ii 1 no-profit
+%    \ei
+%    \ii Se vi interessa approfondire: www.netcommons.eu
+%    \ei
+%    %\bab{Posizioni aperte}
+%    %\bi
+%    %\ii Un dottorato
+%    %\ii Un post-doc
+%    %\ei
+%    %\eab
+%}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Actual content below %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfdeclareimage[width=\columnwidth]{prism}{images/PRISM1}
+\pgfdeclareimage[width=0.9\columnwidth]{ninux1}{images/ninux1}
+\pgfdeclareimage[width=0.6\columnwidth]{ninux2}{images/ninux2}
+\pgfdeclareimage[width=0.9\columnwidth]{ninux3}{images/ninux3}
+\pgfdeclareimage[width=0.9\columnwidth]{ninux4}{images/ninux4}
+\pgfdeclareimage[width=0.9\columnwidth]{ninux5}{images/ninux5}
+\pgfdeclareimage[width=0.9\columnwidth]{awmn}{images/awmn}
+\pgfdeclareimage[width=0.9\columnwidth]{guifi}{images/guifi}
+
+\frame{
+    \frametitle{PRISM}
+    \begin{center}
+    \pgfuseimage{prism}
+    \end{center}
+}
+\frame{
+    \frametitle{Reti Comunitarie}
+\bi 
+\ii Reti decentralizzate, fatte da persone, per sovvertire questo stato di cose a partire dalla rete stessa
+\ei
+}
+
+
+\frame{
+    \frametitle{Nodo Ninux}
+    \begin{center}
+    \pgfuseimage{ninux1}
+    \end{center}
+}
+
+\frame{
+    \frametitle{Nodo Ninux}
+    \begin{center}
+    \pgfuseimage{ninux2}
+    \end{center}
+}
+
+\frame{
+    \frametitle{Nodo Ninux}
+    \begin{center}
+    \pgfuseimage{ninux3}
+    \end{center}
+}
+
+\frame{
+    \frametitle{Nodo Ninux}
+    \begin{center}
+    \pgfuseimage{ninux4}
+    \end{center}
+}
+
+\frame{
+    \frametitle{Ninux}
+    \begin{center}
+    \pgfuseimage{ninux5}
+    \end{center}
+}
+
+\frame{
+    \frametitle{AWMN}
+    \begin{center}
+    \pgfuseimage{awmn}
+    \end{center}
+}
+
+
+\frame{
+    \frametitle{Guifi.net}
+    \begin{center}
+    \pgfuseimage{guifi}
+    \end{center}
+}
+
+\frame{
+  \frametitle{Ninux Firenze}
+  \centering\includegraphics[width=0.4\columnwidth]{images/ninux-fi}
+}
+
+
+\frame{
+  \frametitle{Come e' fatta Firenze}
+  \centering\includegraphics[width=0.7\columnwidth]{images/firenze-rilievo}
+}
+
+\frame{
+  \frametitle{Come e' fatta Firenze - II}
+  \includegraphics[width=\columnwidth]{images/panorama}
+}
+
+\frame{
+  \frametitle{Come e' fatta Firenze - III}
+  \bi
+  \ii Firenze e' circondata da colline mentre la citta' e' abbastanza piatta e gli
+  edifici non troppo alti
+  \ii Da un lato non ci sono colline che ostacolano la linea di vista
+  \ii Da un altro e' difficile trovare punti alti in cui superare gli ostacoli 
+  \ei
+}
+
+\frame{
+  \frametitle{Cosa ci facciamo?}
+  \bi
+\ii \ldots lo vedremo nei prossimi talk
+  \ei
+}
+
+
+\frame{
+  \frametitle{Conclusioni}
+  \bi
+  \ii Le reti comunitarie sono infrastrutture di rete costruite dal basso, 
+  e gestite come beni comuni
+  \ii Sono un ottimo modo per sperimentare, imparare, e per riprendere il controllo delle nostre comunicazioni
+  \ii Partecipate!
+  \bi
+\ii www.firenze.ninux.org
+\ii firenze@ninux.org 
+  \ei
+  \ei
+}
+
+
+
+%\frame{
+%    \frametitle{netcommons.eu}
+%    \bi
+%    \ii Un progetto di ricerca di tre anni, iniziato a Gennaio in cui ci
+%    occupiamo di reti comunitarie con un approccio interdisciplinare:
+%    \bi
+%    \ii 3 dipartimenti di informatica 
+%    \ii 2 dipartimenti/centri di ricerca di legge
+%    \ii 1 dipartimento di sociologia
+%    \ii 1 no-profit
+%    \ei
+%    \ii Se vi interessa approfondire: www.netcommons.eu
+%    \ei
+%    \bab{Posizioni aperte}
+%    \bi
+%    \ii Un dottorato
+%    \ii Un post-doc
+%    \ei
+%    \eab
+%}
+%
+
+
+
+
+
+\end{document}
+

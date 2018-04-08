@@ -1,0 +1,114 @@
+
+% Macro per il titolo e altre variabili di report
+\newcommand{\repnumber}{Secondo Report}
+
+
+%misc
+\newcommand{\un}{\uncover<+->}
+\newenvironment{code}{\footnotesize\verbatim}{\endverbatim}
+\newcommand{\dfixme}[2]{\fixme[margin]{#1}\fixme[footnote]{#2}}
+% item e boxes
+
+\newcommand{\bii}{\begin{itemize}[<+->]}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ii}{\item}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\newcommand{\bab}[1]{\begin{alertblock}{#1}}
+\newcommand{\eab}{\end{alertblock}}
+\newcommand{\beb}[1]{\begin{exampleblock}{#1}}
+\newcommand{\eeb}{\end{exampleblock}}
+\newcommand{\bbox}{\begin{beamerboxesrounded}}
+\newcommand{\ebox}{\end{beamerboxesrounded}}
+
+
+% Standard e protocolli
+
+
+\newcommand{\wi}{802.11}
+\newcommand{\wm}{WiMax}
+\newcommand{\fl}{ISM}
+
+\newcommand{\std}{\ensuremath{\textit{Standard 802.16-2004}}\xspace} 
+\newcommand{\pro}{\ensuremath{\textit{protocollo 802.16-2004}}\xspace}
+\newcommand{\drae}{\ensuremath{\textit{Draft 802.16e}}\xspace} 
+\newcommand{\proe}{\ensuremath{\textit{protocollo 802.16e}}\xspace}
+
+\newcommand{\ui}{\ensuremath{\textit{IEEE 802.11i}}\xspace}
+\newcommand{\us}{\ensuremath{\textit{IEEE 802.11}}\xspace}
+\newcommand{\se}{\ensuremath{\textit{IEEE 802.16e}}\xspace}
+\newcommand{\sd}{\ensuremath{\textit{IEEE 802.16d}}\xspace}
+\newcommand{\Ss}{\ensuremath{\textit{IEEE 802.16}}\xspace}
+\newcommand{\Sc}{\ensuremath{\textit{IEEE 802.16-2005}}\xspace}
+\newcommand{\ux}{\ensuremath{\textit{IEEE 802.1X}}\xspace}
+
+% sigle di nodi
+\newcommand{\aut}{\ensuremath{\textit{Aut}}\xspace}
+\newcommand{\aau}{\ensuremath{\textit{AA}_1}\xspace}
+\newcommand{\aad}{\ensuremath{\textit{AA}_2}\xspace}
+\newcommand{\aat}{\ensuremath{\textit{AA}_3}\xspace}
+\newcommand{\aaq}{\ensuremath{\textit{AA}_4}\xspace}
+\newcommand{\aaid}{\ensuremath{\textit{AA}_{id}}\xspace}
+\newcommand{\stau}{\ensuremath{\textit{SA}_1}\xspace}
+\newcommand{\stad}{\ensuremath{\textit{SA}_2}\xspace}
+\newcommand{\sta}{\ensuremath{\textit{Sta}}\xspace}
+\newcommand{\as}{\ensuremath{\textit{AS}}\xspace}
+
+\newcommand{\sn}{\ensuremath{\textit{sponsor node}}\xspace}
+\newcommand{\bs}{\ensuremath{\textit{base station}}\xspace}
+\newcommand{\supp}{\ensuremath{\textit{supplicant}}\xspace}
+\newcommand{\auth}{\ensuremath{\textit{authenticator}}\xspace}
+\newcommand{\auths}{\ensuremath{\textit{authentication server}}\xspace}
+
+
+
+
+
+% chiavi
+\newcommand{\psa}{\textit{primary security association}}
+\newcommand{\ssa}{\textit{static security association}}
+\newcommand{\dsa}{\textit{dynamic security association}}
+\newcommand{\fa}{\ensuremath{\textit{fast re-authentication}}\xspace}
+\newcommand{\substa}{\ensuremath{\textit{SS}}\xspace}
+\newcommand{\basesta}{\ensuremath{\textit{BS}}\xspace} 
+\newcommand{\mobsta}{\ensuremath{\textit{MS}}\xspace}
+\newcommand{\authserv}{\ensuremath{\textit{AS}}\xspace}  
+\newcommand{\secass}{\ensuremath{\textit{SA}}\xspace}  
+\newcommand{\authkey}{\ensuremath{\textit{AK}}\xspace} 
+\newcommand{\tek}{\ensuremath{\textit{TEK}}\xspace}   
+
+\newcommand{\pak}{\ensuremath{\textit{PAK}}\xspace}   
+\newcommand{\ppak}{\ensuremath{\textit{Pre-PAK}}\xspace}   
+\newcommand{\eik}{\ensuremath{\textit{EIK}}\xspace}   
+\newcommand{\kek}{\ensuremath{\textit{KEK}}\xspace}   
+\newcommand{\sa}{\ensuremath{\textit{SA}}\xspace}
+\newcommand{\su}{\ensuremath{\textit{SU}}\xspace}
+\newcommand{\pmk}{\ensuremath{\textit{PMK}}\xspace}
+\newcommand{\psk}{\ensuremath{\textit{PSK}}\xspace}
+\newcommand{\ptk}{\ensuremath{\textit{PTK}}\xspace}
+\newcommand{\gtk}{\ensuremath{\textit{GTK}}\xspace}
+\newcommand{\pmki}{\ensuremath{\textit{PMK}_i}\xspace}
+\newcommand{\pmkid}{\ensuremath{\textit{PMKID}}\xspace}
+\newcommand{\pmksa}{\ensuremath{\textit{PMKSA}}\xspace}
+\newcommand{\ptksa}{\ensuremath{\textit{PTKSA}}\xspace}
+\newcommand{\rnd}{\ensuremath{\textit{RANDOM}}\xspace}
+\newcommand{\tkn}{\ensuremath{\textit{TOKEN}}\xspace}
+\newcommand{\tknn}{\ensuremath{\textit{TOKEN}}}
+\newcommand{\emsk}{\ensuremath{\textit{AMSK}}\xspace}
+\newcommand{\amsk}{\ensuremath{\textit{AMSK}}\xspace}
+\newcommand{\ak}{\ensuremath{\textit{AK}}\xspace}
+\newcommand{\os}{\ensuremath{\textit{OSS}}\xspace}
+\newcommand{\teko}{\ensuremath{\textit{TEK0}}\xspace}   
+\newcommand{\teki}{\ensuremath{\textit{TEK1}}\xspace}   
+\newcommand{\hmac}{\ensuremath{\textit{HMAC}}\xspace}   
+
+\newcommand{\emskid}{\ensuremath{\textit{AMSKID}}\xspace}
+\newcommand{\msk}{\ensuremath{\textit{MSK}}\xspace}
+\newcommand{\radkey}{\ensuremath{\textit{RADIUSKEY}}\xspace}
+
+
